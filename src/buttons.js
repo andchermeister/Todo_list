@@ -1,5 +1,3 @@
-import "./styles.css"
-
 const toDoForm = document.querySelector(".form");
 const inputTitle = document.getElementById("title");
 const toDosContainer = document.getElementById("toDos");

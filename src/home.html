@@ -3,84 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title>Todo List</title>
+
+    <!-- CSS Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <!-- CSS Icons -->
     <script src="https://kit.fontawesome.com/ec293c6c37.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-   <div id="toDo-section">
-        <div id="projectName">Project 1</div>
-        <button id="todoCreateButton">Add</button>
-        <div class="form">
-            <div class="todo_create_form" action="example.com/path" method="post">
-                <div>
-                    <label for="title">Title:</label>
-                    <input class="styled-input" type="text" name="title" id="title">
-                </div>
+   <nav class="sidebar close">
+        <header>
+            <div class="logo-text">
+                <span class="logo">
+                    <i class="fa-solid fa-list-check"></i>
+                </span>
 
-                <div>
-                    <label for="description">Description:</label>
-                    <input class="styled-input" type="text" name="description" id="description">
+                <div class="text header-text">
+                    <span class="title">Todo List</span>
                 </div>
-
-                <div>
-                    <label for="dueDate">Due date:</label>
-                    <input class="styled-input" type="date" name="dueDate" id="dueDate">
-                </div>
-
-                <div>
-                    <label for="priority">Priority:</label>
-                    <select class="styled-input" name="priority" id="priority">
-                        <option value="high">High</option>
-                        <option value="medium" selected>Medium</option>
-                        <option value="low">Low</option>
-                    </select>
-                </div>
-
-                <button type="submit" id="submitTodoBtn">Create</button>
             </div>
-        </div>
-        <div id="todoDone">
-            <div id="td">
-                <div id="tdTitle">To do</div>
-                <ul id="toDos">
-                    <li>
-                        <span>Work</span>
-                        <button class="editTdBtn">
-                             <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                        <button class="deleteTdBtn">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
+
+            <i class="fa-solid fa-arrow-right toggle"></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-links">
+                        <a href="#">
+                            <i class="fa-solid fa-house icon"></i>
+                            <span class="text nav-text">Projects</span>  
+                        </a>
                     </li>
-                    <li>
-                        <span>Groceries</span>
-                        <button class="editTdBtn">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                        <button class="deleteTdBtn">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
+                    <li class="nav-links">
+                        <a href="#">
+                            <i class="fa-solid fa-rocket icon"></i>
+                            <span class="text nav-text">Project 1</span>  
+                        </a>
                     </li>
-                </ul>
-            </div>
-            <div id="dn">
-                <div id="dnTitle">Done</div>
-                <ul id="dones">
-                    <li class="checked">
-                        <span>Gym</span>
-                        <button class="editDnBtn">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                        <button class="deleteDnBtn">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
+                    <li class="nav-links">
+                        <a href="#">
+                            <i class="fa-solid fa-rocket icon"></i>
+                            <span class="text nav-text">Project 2</span>  
+                        </a>
+                    </li>
+                    <li class="nav-links">
+                        <a href="#">
+                            <i class="fa-solid fa-rocket icon"></i>
+                            <span class="text nav-text">Project 3</span>  
+                        </a>
+                    </li>
+                    <li class="nav-links">
+                        <a href="#">
+                            <i class="fa-solid fa-rocket icon"></i>
+                            <span class="text nav-text">Project 4</span>  
+                        </a>
+                    </li>
+                    <li class="nav-links">
+                        <a href="#">
+                            <i class="fa-solid fa-rocket icon"></i>
+                            <span class="text nav-text">Project 5</span>  
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
-   </div>
+
+        <div class="bottom-content">
+
+            <li class="mode">
+                <div class="moon-sun">
+                    <i class="fa-regular fa-moon icon moon"></i>
+                    <i class="fa-regular fa-sun icon sun"></i>
+                </div>
+
+                <span class="mode-text text">Dark Mode</span>
+
+                <div class="toggle-switch">
+                    <span class="switch"></span>
+                </div>
+            </li>
+
+        </div>
+   </nav>
+
+   <section class="content">
+        <div class="text">Dashboard</div>
+   </section>
 </body>
 </html>
+
+<!-- <body>
+    <header>
+        <nav>
+            <button id="homeBtn">Home</button>
+            <button id="menuBtn">Menu</button>
+            <button id="aboutBtn">About</button>
+        </nav>
+    </header>
+    <div id="content"></div>
+</body> -->
+
+
+
+<!-- <div id="toDo-section">
+    <div id="projectName">Project 1</div>
+    <button id="todoCreateButton">Add</button>
+    <div class="form">
+        <div class="todo_create_form" action="example.com/path" method="post">
+            <div>
+                <label for="title">Title:</label>
+                <input class="styled-input" type="text" name="title" id="title">
+            </div>
+
+            <div>
+                <label for="description">Description:</label>
+                <input class="styled-input" type="text" name="description" id="description">
+            </div>
+
+            <div>
+                <label for="dueDate">Due date:</label>
+                <input class="styled-input" type="date" name="dueDate" id="dueDate">
+            </div>
+
+            <div>
+                <label for="priority">Priority:</label>
+                <select class="styled-input" name="priority" id="priority">
+                    <option value="high">High</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </div>
+
+            <button type="submit" id="submitTodoBtn">Create</button>
+        </div>
+    </div>
+    <div id="todoDone">
+        <div id="td">
+            <div id="tdTitle">To do</div>
+            <ul id="toDos">
+                <li>
+                    <span>Work</span>
+                    <button class="editTdBtn">
+                         <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button class="deleteTdBtn">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </li>
+                <li>
+                    <span>Groceries</span>
+                    <button class="editTdBtn">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button class="deleteTdBtn">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div id="dn">
+            <div id="dnTitle">Done</div>
+            <ul id="dones">
+                <li class="checked">
+                    <span>Gym</span>
+                    <button class="editDnBtn">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button class="deleteDnBtn">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div> -->
