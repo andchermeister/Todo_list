@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ec293c6c37.js" crossorigin="anonymous"></script>
+<script defer src="main.js"></script></head>
+<body>
+   <div id="toDo-section">
+        <div id="projectName">Project 1</div>
+        <button id="todoCreateButton">Add</button>
+        <div class="form">
+            <div class="todo_create_form" action="example.com/path" method="post">
+                <div>
+                    <label for="title">Title:</label>
+                    <input class="styled-input" type="text" name="title" id="title">
+                </div>
+
+                <div>
+                    <label for="description">Description:</label>
+                    <input class="styled-input" type="text" name="description" id="description">
+                </div>
+
+                <div>
+                    <label for="dueDate">Due date:</label>
+                    <input class="styled-input" type="date" name="dueDate" id="dueDate">
+                </div>
+
+                <div>
+                    <label for="priority">Priority:</label>
+                    <select class="styled-input" name="priority" id="priority">
+                        <option value="high">High</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="submitTodoBtn">Create</button>
+            </div>
+        </div>
+        <div id="todoDone">
+            <div id="td">
+                <div id="tdTitle">To do</div>
+                <ul id="toDos">
+                    <li>
+                        <span>Work</span>
+                        <button class="editTdBtn">
+                             <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button class="deleteTdBtn">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <span>Groceries</span>
+                        <button class="editTdBtn">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button class="deleteTdBtn">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div id="dn">
+                <div id="dnTitle">Done</div>
+                <ul id="dones">
+                    <li class="checked">
+                        <span>Gym</span>
+                        <button class="editDnBtn">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button class="deleteDnBtn">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+   </div>
+</body>
+</html>
