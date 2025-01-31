@@ -1,5 +1,100 @@
 import "./styles.css"
+import { loadHome } from './home.js';
+import { loadProject } from './project.js';
 
+loadHome();
+
+const homeBtn = document.querySelector(".nav-links a[href='#']:has(.fa-house)");
+const newBtn = document.querySelector(".nav-links a[href='#']:has(.fa-plus)");
+const projectBtns = document.querySelectorAll(".nav-links a[href='#']:has(.fa-rocket)");
+const reloadBtn = document.querySelector(".nav-links a[href='#']:has(.fa-rotate-right)");
+let projectCounter = localStorage.getItem("projectCounter") ? parseInt(localStorage.getItem("projectCounter")) : 1;
+const menuLinks = document.querySelector(".menu-links");
+
+if (homeBtn) {
+    homeBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        loadHome();
+    });
+}
+
+function createProjectButton(projectNumber) {
+
+    if (!menuLinks) return;
+
+    const li = document.createElement("li");
+    li.classList.add("nav-links");
+
+    const a = document.createElement("a");
+    a.href = "#";
+
+    const i = document.createElement("i");
+    i.classList.add("fa-solid", "fa-rocket", "icon");
+
+    const span = document.createElement("span");
+    span.classList.add("text", "nav-text");
+    span.innerHTML = `Project ${projectNumber}`;
+
+    li.appendChild(a);
+    a.appendChild(i);
+    a.appendChild(span);
+    menuLinks.appendChild(li);
+
+    localStorage.setItem(`project_${projectNumber}`, `Project ${projectNumber}`);
+
+    a.addEventListener("click", (event) => {
+        event.preventDefault();
+        loadProject(projectNumber);
+    });
+}
+
+function loadStoredProjects() {
+    for (let i = 1; i < projectCounter; i++) {
+        const projectData = localStorage.getItem(`project_${i}`);
+        if (projectData) {
+            createProjectButton(i);
+        }
+    }
+}
+
+loadStoredProjects();
+
+if (newBtn) {
+    newBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const existingProjects = menuLinks.querySelectorAll(".nav-links a[href='#']:has(.fa-rocket)").length;
+        if (existingProjects >= 7) {
+            alert("You can only have maximum of 7 projects.");
+            return;
+        }
+
+        createProjectButton(projectCounter);
+        localStorage.setItem(`project_${projectCounter}`, projectCounter);
+        
+        projectCounter++;
+        localStorage.setItem("projectCounter", projectCounter);
+    });
+}
+
+if (projectBtns) {
+    projectBtns.forEach((btn, index) => {
+        btn.addEventListener("click", (event) => {
+            event.preventDefault();
+            loadProject(index + 1);
+        });
+    });
+}
+
+if (reloadBtn) {
+    reloadBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        localStorage.clear();
+        location.reload();
+    });
+}
+
+// SIDEBAR
 const body = document.querySelector("body"),
         sidebar = body.querySelector(".sidebar"),
         toggle = body.querySelector(".toggle"),
@@ -19,94 +114,3 @@ const body = document.querySelector("body"),
                 modeText.innerHTML = "Dark Mode";
             }
         });
-
-// const toDoForm = document.querySelector(".form");
-// const inputTitle = document.getElementById("title");
-// const toDosContainer = document.getElementById("toDos");
-// const donesContainer = document.getElementById("dones"); 
-
-// document.addEventListener("DOMContentLoaded", () => {
-
-//     // Display form
-//     todoCreateButton.addEventListener("click", () => {
-//       toDoForm.style.display = "block";
-//     });
-
-//     // Submit new task
-//     submitTodoBtn.addEventListener("click", () => {
-//         if(inputTitle.value === "") {
-//             alert("Missing title value!")
-//         } else {
-//             const li = document.createElement("li");
-
-//             const taskSpan = document.createElement("span");
-//             taskSpan.textContent = inputTitle.value;
-            
-//             const editButton = document.createElement("button");
-//             editButton.classList.add("editTdBtn");
-//             editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
-            
-//             const deleteButton = document.createElement("button");
-//             deleteButton.classList.add("deleteTdBtn");
-//             deleteButton.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-
-//             li.appendChild(taskSpan);
-//             li.appendChild(editButton);
-//             li.appendChild(deleteButton);
-
-//             toDosContainer.appendChild(li);
-
-//             inputTitle.value = "";
-
-//         }
-//       });
-
-//     // Helper function to find the parent <li> element
-//     function findParentListItem(element) {
-//         while (element && element.tagName !== "LI") {
-//             element = element.parentElement;
-//         }
-//         return element;
-//     };
-
-
-//     // Check/uncheck tasks
-//     toDosContainer.addEventListener("click", (event) => {
-//         const listItem = findParentListItem(event.target);
-//         if (listItem) {
-//             listItem.classList.add("checked");
-//             const textSpan = listItem.querySelector("span");
-//             if (textSpan) {
-//                 textSpan.style.textDecoration = "line-through";
-//             }
-
-//             const icons = listItem.querySelectorAll(".fa-solid");
-//             icons.forEach((icon) => {
-//                 icon.classList.add("icon-green");
-//             });
-
-
-//             toDosContainer.removeChild(listItem);
-//             donesContainer.appendChild(listItem);
-//         }
-//     });
-
-//     donesContainer.addEventListener("click", (event) => {
-//         const listItem = findParentListItem(event.target);
-//         if (listItem) {
-//             // Move the task back to the "To Do" list
-//             listItem.classList.remove("checked");
-//             const textSpan = listItem.querySelector("span");
-//             if (textSpan) {
-//                 textSpan.style.textDecoration = "none"; // Remove line-through
-//             }
-
-//             const icons = listItem.querySelectorAll(".fa-solid");
-//             icons.forEach((icon) => {
-//                 icon.classList.remove("icon-green");
-//             });
-//             donesContainer.removeChild(listItem);
-//             toDosContainer.appendChild(listItem);
-//         }
-//     });
-//   });

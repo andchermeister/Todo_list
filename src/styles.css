@@ -10,6 +10,7 @@
   --sidebar-color: #FFF;
   --primary-color: #FF954E;
   --primary-color-light: #fae7d2;
+  --done-color: #519260;
   --toggle-color: #DDD;
   --text-color: #707070;
 
@@ -230,7 +231,7 @@ body.dark .switch::before{
   left: 24px;
 }
 
-.content{
+#content{
   position: relative;
   height: 100vh;
   left: 278px;
@@ -239,14 +240,14 @@ body.dark .switch::before{
   transition: var(--tran-05);
 }
 
-.content .text{
+#content .text{
   font-size: 30px;
   font-weight: 500;
   color: var(--text-color);
   padding: 8px 40px;
 }
 
-.sidebar.close ~ .content{
+.sidebar.close ~ #content{
   left: 94px;
   width: calc(100% - 94px);
 }
@@ -255,27 +256,26 @@ body.dark .switch::before{
 
 /* TODOS */
 
-/* #toDo-section {
+#toDoSection {
   padding: 50px;
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  background-color: #151515;
-  position: relative;
   text-align: center;
   align-items: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 8px 40px;
 }
 
-#projectName {
-  color: #FFFCFC;
-  font-size: 24px;
+#projectSection {
+  display: flex;
 }
 
-#todoCreateButton {
+#toDoCreateButton {
   font-size: 18px;
-  color: white;
-  background-color: #FF954E;
+  color: var(--sidebar-color);
+  background-color: var(--primary-color);
   position: relative;
   top: 20px;
   width: 100px;
@@ -283,17 +283,10 @@ body.dark .switch::before{
   border-radius: 25px;
 }
 
-#tdTitle,
-#toDos {
-  color: #726F6F;
-}
-
 #dnTitle,
 #dones {
-  color: #519260;
+  color: var(--done-color);
 }
-
-
 
 #todoDone {
   position: relative;
@@ -309,40 +302,39 @@ body.dark .switch::before{
   right: 200px;
 }
 
-ul {
+#toDos, #dones {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  
 }
 
-ul li {
+#toDos li, #dones li {
   list-style: none;
   position: relative;
   margin: 10px;
 }
 
-ul li::before {
+#toDos li::before, #dones li::before {
   content: "";
   position: absolute;
   height: 18px;
   width: 18px;
-  border: 2px solid #726F6F;
+  border: 2px solid var(--text-color);
   border-radius: 50%;
   right: 100%;
   margin-right: 10px;
 }
 
-ul li.checked span {
-  color: #519260;
+#toDos li.checked span,  #dones li.checked span {
+  color: var(--done-color);
   text-decoration: line-through;
 }
 
-ul li.checked::before {
-  border-color: #519260;
+#toDos li.checked::before, #dones li.checked::before {
+  border-color: var(--done-color);
 }
 
-ul li.checked::after {
+#toDos li.checked::after, #dones li.checked::after {
   content: "";
   position: absolute;
   width: 5px;
@@ -353,49 +345,54 @@ ul li.checked::after {
   right: 100%;
   margin-right: 17px;
   transform: rotate(45deg);
-} */
+}
 
-/* .fa-solid, .fa-pen-to-square, .fa-solid, .fa-xmark {
- 
-} */
-
-/* .editTdBtn, .deleteTdBtn, .editDnBtn, .deleteDnBtn {
+.editTdBtn, .deleteTdBtn, .editDnBtn, .deleteDnBtn, #deleteProjectButton {
   background-color: transparent; 
   border: none; 
-  color: #726F6F; 
+  color: var(--text-color); 
   cursor: pointer; 
 }
 
 .editDnBtn, .deleteDnBtn {
   text-decoration: none;
-  color: #519260;
+  color: var(--done-color);
 }
 
 .icon-green {
-  color: #519260; 
+  color: var(--done-color);
 }
 
 .editTdBtn i, .deleteTdBtn i, .editDnBtn i, .deleteDnBtn i{
-  font-size: 18px; 
+  position: relative;
+  font-size: 18px;
+  left: 20px;
+  padding: 5px;
+}
+
+#deleteProjectButton i {
+  position: relative;
+  font-size: 30px;
+  padding: 5px;
 }
 
 .editTdBtn:hover, .deleteTdBtn:hover {
-  color: #FF954E; 
+  color: var(--primary-color);
+  transition: var(--tran-02);
 }
 
 #dn {
   position: relative;
   left: 200px;
-} */
-
+}
 
 /* FORM */
 
-/* .form {
+.form {
   display: none;
   position: relative;
   top: 50px;
-  color: #726F6F;
+  color: var(--text-color);
 }
 
 .styled-input {
@@ -407,22 +404,80 @@ ul li.checked::after {
   align-items: center;
   border-radius: 10px;
   border-width: 3px;
-  background-color: #151515;
-  color: #726F6F;
+  background-color: var(--body-color);
+  color: var(--text-color);
 }
-
-
 
 #submitTodoBtn {
   font-size: 14px;
-  color: white;
-  background-color: #FF954E;
+  color: var(--sidebar-color);
+  background-color: var(--primary-color);
   position: relative;
   top: 20px;
   width: 75px;
   height: 40px;
   border-radius: 25px;
-} */ 
+}
+
+
+/* EDIT */
+
+#editContainer {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+#titleDateContainer, #priorityContainer {
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  width: 650px;
+  height: 3px;
+  background-color: var(--text-color);
+}
+
+#saveBtn {
+  font-size: 14px;
+  color: var(--sidebar-color);
+  background-color: var(--primary-color);
+  position: relative;
+  top: 40px;
+  width: 75px;
+  height: 40px;
+  border-radius: 25px;
+  
+}
+
+#descriptionTextField {
+  width: 565px;
+  height: 300px;
+  border: 3px solid var(--text-color);
+}
+
+#content #todoTitle.text,
+#todoDueDate.text,
+#todoPriority.text,
+#todoDescription.text,
+#descriptionTextField.text{
+  font-size: 20px;
+}
+
+#todoTitleInput,
+#todoDueDateInput,
+#todoPriorityInput {
+  color: var(--text-color);
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  padding: 5px;
+}
+
+
+
+
 
 
 
